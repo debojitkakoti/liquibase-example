@@ -6,7 +6,7 @@ pipeline {
     MARIADB_CREDS=credentials('mariadb')
   }
   stages {
-    stage('Update') {
+    stage('Test') {
       steps {
         sh 'liquibase update --url="jdbc:mysql://34.93.86.225:3306/liquibase" --changeLogFile=db-changelog.sql --username=$MARIADB_CREDS_USR --password=$MARIADB_CREDS_PSW'
       }
