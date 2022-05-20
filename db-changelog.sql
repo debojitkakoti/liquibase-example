@@ -1,4 +1,4 @@
 -- liquibase formatted sql
 
 -- changeset liquibase:1
-CREATE TABLE test_table (test_id INT, test_column VARCHAR, PRIMARY KEY (test_id))
+CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);
