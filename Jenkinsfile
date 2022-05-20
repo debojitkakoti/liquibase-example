@@ -2,13 +2,12 @@ pipeline {
   agent {
     docker { image 'liquibase/liquibase:4.4.2' }
   }
-  environment {
-    MARIADB_CREDS=credentials('mariadb')
-  }
   stages {
     stage('Test') {
       steps {
-        sh 'liquibase update --url="jdbc:mysql://34.93.86.225:3306/liquibase" --changeLogFile=db-changelog.sql --username=$MARIADB_CREDS_USR --password=$MARIADB_CREDS_PSW'
+      withCredentials([usernamePassword(credentialsId: 'mariadb', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        sh 'liquibase update --url="jdbc:mysql://34.93.86.225:3306/liquibase" --changeLogFile=db-changelog.sql --username=$USERNAME --password=$PASSWORD'
+      }
       }
     }
   }
