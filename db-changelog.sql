@@ -1,12 +1,4 @@
---liquibase formatted sql
+-- liquibase formatted sql
 
---changeset nvoxland:1
-create table test1 (
-    id int primary key,
-    name varchar(255)
-);
---rollback drop table test1;
-
---changeset nvoxland:2
-insert into test1 (id, name) values (1, ‘name 1′);
-insert into test1 (id,  name) values (2, ‘name 2′);  
+-- changeset liquibase:1
+CREATE TABLE test_table (test_id INT, test_column VARCHAR, PRIMARY KEY (test_id))
